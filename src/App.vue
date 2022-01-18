@@ -1,6 +1,6 @@
 <template>
   <div id="nav">
-    <header :list="getMenu"></header>
+    <Header :list="menu"></Header>
   </div>
   <div class="main">
     <router-view />
@@ -9,7 +9,7 @@
 <script>
 import "@/assets/style/container.scss";
 import { mapState, mapGetters, mapActions } from "vuex";
-import Header from './components/Header.vue';
+import Header from "./components/Header.vue";
 export default {
   components: { Header },
   computed: {
@@ -17,6 +17,9 @@ export default {
     ...mapGetters({
       getMenu: "menuStore/getMenu",
     }),
+    menu(){
+      return this.getMenu('header_menu')
+    }
   },
   methods: {
     ...mapActions({
